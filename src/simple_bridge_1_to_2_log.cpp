@@ -35,7 +35,7 @@
 
 rclcpp::Publisher<rcl_interfaces::msg::Log>::SharedPtr pub;
 
-void topic_callback(const rcl_interfaces::msg::Log::ConstPtr & ros1_msg)
+void topic_callback(const rosgraph_msgs::Log::ConstPtr & ros1_msg)
 {
   auto ros2_msg = std::make_unique<rcl_interfaces::msg::Log>();
 

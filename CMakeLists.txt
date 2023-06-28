@@ -242,7 +242,7 @@ custom_executable(simple_bridge_1_to_2_log "src/simple_bridge_1_to_2_log.cpp"
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "rcl_interfaces" "rosgraph_msgs")
 
-custom_executable(simple_bridge_1_to_2_jointState "src/simple_bridge_1_to_2_jointState.cpp"
+custom_executable(simple_bridge_1_to_2_jointState "src/simple_bridge_1_to_2_joint_state.cpp"
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "sensor_msgs")
 
