@@ -246,6 +246,10 @@ custom_executable(simple_bridge_1_to_2_jointState "src/simple_bridge_1_to_2_join
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "sensor_msgs")
 
+custom_executable(head_controller "src/action_bridge_head_controller.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "rclcpp_action" "control_msgs")
+
 add_library(${PROJECT_NAME} SHARED
   "src/builtin_interfaces_factories.cpp"
   "src/convert_builtin_interfaces.cpp"
