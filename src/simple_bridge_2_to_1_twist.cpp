@@ -80,7 +80,7 @@ int main(int argc, char * argv[])
   // ROS 1 node and publisher
   ros::init(argc, argv, node->get_name());
   ros::NodeHandle n;
-  pub = n.advertise<geometry_msgs::Twist>(topic_name, 30);
+  pub = n.advertise<geometry_msgs::Twist>(topic_name, 1);
 
   // ROS 2 susbscriber
   auto sub = node->create_subscription<geometry_msgs::msg::Twist>(

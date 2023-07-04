@@ -47,7 +47,7 @@ int main(int argc, char * argv[])
   // ROS 1 node and publisher
   ros::init(argc, argv, "talker");
   ros::NodeHandle n;
-  pub = n.advertise<std_msgs::String>("chatter", 10);
+  pub = n.advertise<std_msgs::String>("chatter", 1);
 
   // ROS 2 node and subscriber
   rclcpp::init(argc, argv);

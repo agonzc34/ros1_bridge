@@ -106,7 +106,7 @@ int main(int argc, char * argv[])
   // ROS 1 node and subscriber
   ros::init(argc, argv, "bridge_listener_odom");
   ros::NodeHandle n;
-  ros::Subscriber sub = n.subscribe(topic_name, 50, topic_callback);
+  ros::Subscriber sub = n.subscribe(topic_name, 1, topic_callback);
 
   ros::spin();
 

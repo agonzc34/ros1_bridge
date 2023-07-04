@@ -98,7 +98,7 @@ int main(int argc, char * argv[])
   // ROS 1 node and subscriber
   ros::init(argc, argv, node->get_name());
   ros::NodeHandle n;
-  ros::Subscriber sub = n.subscribe(topic_name, 30, topic_callback);
+  ros::Subscriber sub = n.subscribe(topic_name, 1, topic_callback);
 
   ros::spin();
 

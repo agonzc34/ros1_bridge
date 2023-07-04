@@ -54,7 +54,7 @@ int main(int argc, char * argv[])
   // ROS 1 node and subscriber
   ros::init(argc, argv, "listener");
   ros::NodeHandle n;
-  ros::Subscriber sub = n.subscribe("chatter", 10, chatterCallback);
+  ros::Subscriber sub = n.subscribe("chatter", 1, chatterCallback);
 
   ros::spin();
 

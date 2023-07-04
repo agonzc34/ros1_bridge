@@ -155,7 +155,7 @@ int main(int argc, char * argv[])
   ros::init(argc, argv, node->get_name());
   ros::NodeHandle n;
   ros::Subscriber sub = n.subscribe(topic_name, 100, topic_callback);
-  ros::Subscriber sub2 = n.subscribe(topic_name + "_static", 100, topic_static_callback);
+  ros::Subscriber sub2 = n.subscribe(topic_name + "_static", 1, topic_static_callback);
 
 
 
