@@ -38,12 +38,6 @@ rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr pub;
 void topic_callback(const geometry_msgs::Twist::ConstPtr & ros1_msg)
 {
   auto ros2_msg = std::make_unique<geometry_msgs::msg::Twist>();
-
-  
-  ros2_msg->header.stamp.sec = ros1_msg->header.stamp.sec;
-  ros2_msg->header.stamp.nanosec = ros1_msg->header.stamp.nsec;
-  ros2_msg->header.frame_id = ros1_msg->header.frame_id;
-  
   
   ros2_msg->linear.x = ros1_msg->linear.x;
   ros2_msg->linear.y = ros1_msg->linear.y;
@@ -53,7 +47,7 @@ void topic_callback(const geometry_msgs::Twist::ConstPtr & ros1_msg)
   ros2_msg->angular.y = ros1_msg->angular.y;
   ros2_msg->angular.z = ros1_msg->angular.z;
   
-  pub.publish(ros2_msg)
+  pub->publish(std::move(ros2_msg));
 }
 
 int main(int argc, char * argv[])
