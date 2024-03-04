@@ -202,6 +202,10 @@ custom_executable(simple_bridge_2_to_1_twist "src/simple_bridge_2_to_1_twist.cpp
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "std_msgs" "geometry_msgs")
   
+custom_executable(simple_bridge_1_to_2_twist "src/simple_bridge_1_to_2_twist.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "std_msgs" "geometry_msgs")
+  
  custom_executable(simple_bridge_1_to_2_image "src/simple_bridge_1_to_2_image.cpp"
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "std_msgs" "sensor_msgs")
