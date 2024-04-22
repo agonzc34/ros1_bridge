@@ -22,7 +22,10 @@ def generate_launch_description():
 	"point_cloud2": "simple_bridge_1_to_2_point_cloud",
 	"camera_info": "simple_bridge_1_to_2_camera_info",
     "log": "simple_bridge_1_to_2_log",
-	"joint_state": "simple_bridge_1_to_2_jointState"}
+	"joint_state": "simple_bridge_1_to_2_jointState",
+	"joint_trajectory": "simple_bridge_2_to_1_joint_trajectory",
+	"joint_trajectory_controller_state": "simple_bridge_1_to_2_joint_trajectory_controller_state",
+	}
 
 	
 	data = open_yaml_file()

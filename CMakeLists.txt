@@ -21,6 +21,7 @@ find_package(nav_msgs REQUIRED)
 find_package(tf2_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(control_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(rcl_interfaces REQUIRED)
 
@@ -53,6 +54,7 @@ find_ros1_package(nav_msgs REQUIRED)
 find_ros1_package(tf2_msgs REQUIRED)
 find_ros1_package(geometry_msgs REQUIRED)
 find_ros1_package(control_msgs REQUIRED)
+find_ros1_package(trajectory_msgs REQUIRED)
 find_ros1_package(actionlib REQUIRED)
 find_ros1_package(rosgraph_msgs REQUIRED)
 
@@ -171,6 +173,7 @@ function(custom_executable target)
       "ros1_tf2_msgs"
       "ros1_geometry_msgs"
       "ros1_control_msgs"
+      "ros1_trajectory_msgs"
       "ros1_actionlib"
       "rosgraph_msgs")
   endif()
@@ -200,13 +203,13 @@ custom_executable(simple_bridge_1_to_2_tf "src/simple_bridge_1_to_2_tf.cpp"
 
 custom_executable(simple_bridge_2_to_1_twist "src/simple_bridge_2_to_1_twist.cpp"
   ROS1_DEPENDENCIES
-  TARGET_DEPENDENCIES "std_msgs" "geometry_msgs")
+  TARGET_DEPENDENCIES "std_msgs" "geometry_msgs" "nav_msgs")
   
-custom_executable(simple_bridge_1_to_2_twist "src/simple_bridge_1_to_2_twist.cpp"
-  ROS1_DEPENDENCIES
-  TARGET_DEPENDENCIES "std_msgs" "geometry_msgs")
+# custom_executable(simple_bridge_1_to_2_twist "src/simple_bridge_1_to_2_twist.cpp"
+#   ROS1_DEPENDENCIES
+#   TARGET_DEPENDENCIES "std_msgs" "geometry_msgs" "nav_msgs")
   
- custom_executable(simple_bridge_1_to_2_image "src/simple_bridge_1_to_2_image.cpp"
+custom_executable(simple_bridge_1_to_2_image "src/simple_bridge_1_to_2_image.cpp"
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "std_msgs" "sensor_msgs")
 
@@ -230,9 +233,19 @@ custom_executable(simple_bridge_1_to_2_camera_info "src/simple_bridge_1_to_2_cam
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "std_msgs" "sensor_msgs")
 
+custom_executable(simple_bridge_1_to_2_joint_trajectory_controller_state "src/simple_bridge_1_to_2_joint_trajectory_controller_state.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "std_msgs" "control_msgs" "trajectory_msgs")
+
 custom_executable(simple_bridge_2_to_1 "src/simple_bridge_2_to_1.cpp"
   ROS1_DEPENDENCIES
-  TARGET_DEPENDENCIES "std_msgs")
+  TARGET_DEPENDENCIES "std_msgs"
+)
+
+custom_executable(simple_bridge_2_to_1_joint_trajectory "src/simple_bridge_2_to_1_joint_trajectory.cpp"
+  ROS1_DEPENDENCIES
+  TARGET_DEPENDENCIES "std_msgs" "trajectory_msgs"
+)
 
 custom_executable(simple_bridge "src/simple_bridge.cpp"
   ROS1_DEPENDENCIES
@@ -261,6 +274,7 @@ custom_executable(torso_controller "src/action_bridge_torso_controller.cpp"
 custom_executable(gripper_controller "src/action_bridge_gripper_controller.cpp"
   ROS1_DEPENDENCIES
   TARGET_DEPENDENCIES "rclcpp_action" "control_msgs")
+
 
 add_library(${PROJECT_NAME} SHARED
   "src/builtin_interfaces_factories.cpp"
