@@ -43,23 +43,16 @@ void topic_callback(const trajectory_msgs::msg::JointTrajectory::SharedPtr ros2_
   ros1_msg.header.stamp.nsec = ros2_msg->header.stamp.nanosec;
   ros1_msg.header.frame_id = ros2_msg->header.frame_id;
 
+  ros1_msg.joint_names.resize(ros2_msg->joint_names.size());
   ros1_msg.joint_names = ros2_msg->joint_names;
 
-  for (size_t i = 0; i < ros2_msg->joint_names.size(); i++) {
-    trajectory_msgs::JointTrajectoryPoint point;
+  ros1_msg.points.resize(ros2_msg->points.size());
+  for (size_t i = 0; i < ros2_msg->points.size(); i++) {
+    ros1_msg.points[i].positions = ros2_msg->points[i].positions;
+    ros1_msg.points[i].velocities = ros2_msg->points[i].velocities;
+    ros1_msg.points[i].accelerations = ros2_msg->points[i].accelerations;
+    ros1_msg.points[i].effort = ros2_msg->points[i].effort;
 
-    for (size_t j = 0; j < ros2_msg->points[i].positions.size(); j++) {
-      ros1_msg.points[i].positions.push_back(ros2_msg->points[i].positions[j]);
-    }
-    for (size_t j = 0; j < ros2_msg->points[i].velocities.size(); j++) {
-      ros1_msg.points[i].velocities.push_back(ros2_msg->points[i].velocities[j]);
-    }
-    for (size_t j = 0; j < ros2_msg->points[i].accelerations.size(); j++) {
-      ros1_msg.points[i].accelerations.push_back(ros2_msg->points[i].accelerations[j]);
-    }
-    for (size_t j = 0; j < ros2_msg->points[i].effort.size(); j++) {
-      ros1_msg.points[i].effort.push_back(ros2_msg->points[i].effort[j]);
-    }
     ros1_msg.points[i].time_from_start.sec = ros2_msg->points[i].time_from_start.sec;
     ros1_msg.points[i].time_from_start.nsec = ros2_msg->points[i].time_from_start.nanosec;
   }
